@@ -2,16 +2,16 @@ import sys
 import re
 
 
-fangs = [
-    ('\[\.\]', '.'),
-    ('\[at\]', '@'),
-    ('hxxp:\/\/', 'http://'),
-    ('hxxps:\/\/', 'http://'),
+FANGS = [
+    (r'\[\.\]', '.'),
+    (r'\[at\]', '@'),
+    (r'hxxp:\/\/', 'http://'),
+    (r'hxxps:\/\/', 'http://'),
 ]
 
 
-def doUnfang(var):
-    for pattern, value in fangs:
+def unfang(var):
+    for pattern, value in FANGS:
         var = re.sub(pattern, value, var)
     return var
 
@@ -19,4 +19,4 @@ def doUnfang(var):
 if __name__ == '__main__':
     with open(sys.argv[1]) as f:
         for line in f:
-            print(doUnfang(line.rstrip('\n')))
+            print(unfang(line.rstrip('\n')))
