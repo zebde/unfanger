@@ -11,7 +11,7 @@ FANGS = [
 
 
 def unfang(var):
-    """Removes fangs from strings bases on a list tuple key pair"""
+    """Return an unfanged string based on regexes defined in FANGS."""
     for pattern, value in FANGS:
         var = re.sub(pattern, value, var)
     return var
